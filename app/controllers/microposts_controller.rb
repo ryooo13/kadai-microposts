@@ -32,4 +32,11 @@ class MicropostsController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def favorites
+    @micropost = Micropost.find(params[:id])
+    @favorites = @user.favorites.page(params[:page])
+    counts(@micropost)
+  end  
+  
 end
